@@ -1,0 +1,8 @@
+
+set(_p "@PROJECT_NAME@")
+set(${_p}_build_INCLUDE_DIRS_tmp_ "@build_include_dirs@")
+foreach(${_p}_i_ ${${_p}_build_INCLUDE_DIRS_tmp_})
+    set(${_p}_build_INCLUDE_DIRS ${${_p}_build_INCLUDE_DIRS} "${${_p}_i_}")
+endforeach(${_p}_i_ ${${_p}_build_INCLUDE_DIRS_tmp_})
+
+

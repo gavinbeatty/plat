@@ -1,0 +1,45 @@
+
+cmake_minimum_required(VERSION 2.6)
+if(POLICY CMP0011)
+    cmake_policy(PUSH)
+    cmake_policy(SET CMP0011 NEW)
+endif(POLICY CMP0011)
+
+macro(macro_install_prefix _var)
+    set(_destdir "$ENV{DESTDIR}")
+    if("${_destdir}" STREQUAL "")
+        file(TO_CMAKE_PATH "${CMAKE_INSTALL_PREFIX}" "${_var}")
+    else("${_destdir}" STREQUAL "")
+        file(TO_CMAKE_PATH "${_destdir}/${CMAKE_INSTALL_PREFIX}" "${_var}")
+    endif("${_destdir}" STREQUAL "")
+endmacro(macro_install_prefix _var)
+
+# version that takes care of // case when appending cmake_install_prefix
+# unfortunately, cmake never does this - so why should we? - we won't
+macro(macro_install_prefix__old _var)
+    set(_destdir "$ENV{DESTDIR}")
+    set(_cip "${CMAKE_INSTALL_PREFIX}")
+    set(_abs 0)
+    if("${_cip}" MATCHES "^/")
+        set(_abs 1)
+    endif("${_cip}" MATCHES "^/")
+    if("${_destdir}" STREQUAL "")
+        set("${_var}" "${_cip}")
+    elseif("${_destdir}" MATCHES "^///*")
+        set("${_var}" "${_destdir}${_cip}")
+    elseif("${_destdir}" STREQUAL "^/")
+        if(_abs)
+            set("${_var}" "${_cip}")
+        else(_abs)
+            set("${_var}" "${_destdir}${_cip}")
+        endif(_abs)
+    else("${_destdir}" STREQUAL "")
+        set("${_var}" "${_destdir}/${_cip}")
+    endif("${_destdir}" STREQUAL "")
+endmacro(macro_install_prefix__old _var)
+
+if(POLICY CMP0011)
+    cmake_policy(POP)
+endif(POLICY CMP0011)
+
+
