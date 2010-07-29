@@ -37,7 +37,7 @@ set(${pn}_VERSION_STR "${${pn}_VERSION_MAJOR}.${${pn}_VERSION_MINOR}.${${pn}_VER
 
 set(${pn}_VENDOR_STR "Gavin Beatty")
 set(${pn}_CONTACT_STR "Gavin Beatty <gavinbeatty@gmail.com>")
-set(${pn}_HOMEPAGE_STR "http://repo.or.cz/p/plat")
+set(${pn}_HOMEPAGE_STR "http://code.google.com/p/plat/")
 set(${pn}_DESCRIPTION_STR "Platform detection headers for C/C++.")
 
 configure_file("${${pn}_srcdir}/src/${pn}/config.h.in"
