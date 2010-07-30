@@ -1,4 +1,3 @@
-
 project(plat C)
 cmake_minimum_required(VERSION 2.6)
 if(POLICY CMP0011)
@@ -7,28 +6,29 @@ endif(POLICY CMP0011)
 
 set(CMAKE_MODULE_PATH
     "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmakefiles"
     ${CMAKE_MODULE_PATH})
-include(MacroInstallPrefix)
-include(MacroLogVar)
-include(MacroDeleteInstalled)
-include(MacroSetDefaultInstallDirs)
-include(MacroSetBuildType)
-include(MacroSystemOrLocalDep)
-include(MacroOption)
+include(CmfInstallPrefix)
+include(CmfLogVar)
+include(CmfDeleteInstalled)
+include(CmfSetDefaultInstallDirs)
+include(CmfSetBuildType)
+include(CmfSystemOrLocalDep)
+include(CmfOption)
 
-macro_set_build_type()
+cmf_set_build_type()
 
 set(pn "${PROJECT_NAME}")
 set(${pn}_srcdir "${CMAKE_CURRENT_SOURCE_DIR}")
 set(${pn}_builddir "${CMAKE_CURRENT_BINARY_DIR}")
 string(TOUPPER "${pn}" PN)
 
-macro_option(${PN}_ENABLE_TESTS "Build tests." ON)
+cmf_option(${PN}_ENABLE_TESTS "Build tests." ON)
 
-macro_set_default_install_dirs()
+cmf_set_default_install_dirs()
 
-macro_install_prefix(${pn}_prefix)
-macro_log_var(${pn}_prefix)
+cmf_install_prefix(${pn}_prefix)
+cmf_log_var(${pn}_prefix)
 
 set(${pn}_VERSION_MAJOR 1)
 set(${pn}_VERSION_MINOR 5)
@@ -67,9 +67,9 @@ string(TOUPPER "${name}" NAME)
 string(REGEX REPLACE "." " " empty "${name}")
 set(no_libs TRUE)
 set(config_header "config.h")
-file(READ "cmake/MacroVersionCmp.cmake" macro_version_str)
+file(READ "cmake/cmakefiles/CmfVersionCmp.cmake" cmf_version_str)
 set(deps_code "")
-configure_file("${${pn}_srcdir}/cmake/FindGeneric.cmake.in"
+configure_file("${${pn}_srcdir}/cmake/cmakefiles/FindGeneric.cmake.in"
                "${${pn}_srcdir}/Find${pn}.cmake"
                @ONLY)
 
@@ -91,7 +91,7 @@ if(NOT ${PN}_NO_INSTALL)
 install(FILES           ${${pn}_HDRS}
         DESTINATION     "${${pn}_projincludedir}"
 )
-macro_delete_installed("${${pn}_cmakeexportdir}/Export${pn}-*.cmake")
+cmf_delete_installed("${${pn}_cmakeexportdir}/Export${pn}-*.cmake")
 install(FILES           "${${pn}_builddir}/Export${pn}.cmake"
         DESTINATION     "${${pn}_cmakeexportdir}"
 )
