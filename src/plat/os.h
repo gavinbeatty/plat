@@ -26,7 +26,7 @@
 #       define PLAT_OS_64 1
 #   endif
 /* TODO: do the following actually exist??  - they seem to but should be tested */
-#elif defined(__MSYS__) || defined(__MINGW__)
+#elif defined(__MSYS__) || defined(__MINGW__) || defined(__MINGW32__)
 #   define PLAT_OS_MSYS 1
 #elif defined(__CYGWIN__)
 #   define PLAT_OS_CYGWIN 1
