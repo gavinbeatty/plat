@@ -48,6 +48,15 @@
 #   define PLAT_CC_GCC_VER_PATCH __GNUC_PATCHLEVEL__
 #   define PLAT_CC_GCC_VER ((__GNUC__ << 16) | (__GNUC_MINOR__ << 8) | (__GNUC_PATCHLEVEL__))
 #   define PLAT_CC_GCC_MAKE_VER(x, y, z) (((x) << 16) | ((y) << 8) | (z))
+#   if defined(__clang__)
+#     define PLAT_CC_CLANG 1
+#     define PLAT_CC_CLANG_VER_MAJOR __clang_major__
+#     define PLAT_CC_CLANG_VER_MINOR __clang_minor__
+#     define PLAT_CC_CLANG_VER_PATCH __clang_patchlevel__
+#     define PLAT_CC_CLANG_VER ((__clang_major__ << 16) | (__clang_minor__ << 8) | (__clang_patchlevel__))
+#     define PLAT_CC_CLANG_MAKE_VER(x, y, z) (((x) << 16) | ((y) << 8) | (z))
+#     define PLAT_CC_CLANG_VER_STR __clang_version__
+#   endif
 #elif defined(__GCCXML__)
 #   define PLAT_CC_GCCXML 1
 #elif defined(__DOXYGEN__)
