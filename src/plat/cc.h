@@ -68,24 +68,46 @@
 #   error "plat: Unknown compiler!"
 #endif
 
-#define PLAT_C 1
-/* TODO add support for Obj-C++ */
+#ifdef __STDC__
+#  ifdef __STDC_VERSION__
+#    if __STDC_VERSION__ >= 199901L
+#      define PLAT_CC_ATLEAST_C99 1
+#      define PLAT_CC_ATLEAST_C89_AMEND1 1
+#      define PLAT_CC_ATLEAST_C89 1
+#      if __STDC_VERSION__ == 199901L
+#        define PLAT_CC_C99 1
+#      endif
+#    elif __STDC_VERSION__ >= 199409L
+#      define PLAT_CC_ATLEAST_C89_AMEND1 1
+#      define PLAT_CC_ATLEAST_C89 1
+#      if __STDC_VERSION__ == 199409L
+#        define PLAT_CC_C89_AMEND1 1
+#      endif
+#    else
+#      define PLAT_CC_C89 1
+#      define PLAT_CC_ATLEAST_C89 1
+#    endif
+#  endif
+#else
+#  define PLAT_CC_C_PRE89 1
+#endif
+
 #ifdef __cplusplus
-#   define PLAT_CXX 1
-#   undef PLAT_C
-#   if __cplusplus > 199711L
-#       define PLAT_CXX_0X 1
-#   elif __cplusplus == 199711L
-#       define PLAT_CXX_03 1
-#   else
-#       define PLAT_CXX_NOT_ISO 1
-#   endif
+#  define PLAT_CC_CXX
+#  if __cplusplus >= 199711L
+#    define PLAT_CC_ATLEAST_CXX_0X 1
+#    define PLAT_CC_ATLEAST_CXX_03 1
+#    define PLAT_CC_ATLEAST_CXX_97 1
+#    if __cplusplus == 199711L
+#      define PLAT_CC_CXX_03 1
+#    endif
+#  else
+#    define PLAT_CC_CXX_NOT_ISO 1
+#  endif
 #endif
 
 #ifdef __OBJC__
-#   define PLAT_OBJC 1
-/* XXX undef C? */
-#   undef PLAT_C
+#  define PLAT_CC_OBJC 1
 #endif
 
 #define PLAT_CC_GNU (0plat_cc_gnu_does_not_exist_anymore__use_plat_cc_gcc)
