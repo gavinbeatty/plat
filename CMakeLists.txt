@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 2.6)
 if(POLICY CMP0011)
     cmake_policy(SET CMP0011 NEW)
 endif(POLICY CMP0011)
+if(POLICY CMP0012)
+    cmake_policy(SET CMP0012 NEW)
+endif(POLICY CMP0012)
 
 set(CMAKE_MODULE_PATH
     "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
