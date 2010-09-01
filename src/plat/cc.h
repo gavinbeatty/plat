@@ -60,6 +60,8 @@
 #elif defined(__GCCXML__)
 /* XXX test - __GNUC__ is probably defined too, so this'll fail */
 #   define PLAT_CC_GCCXML 1
+#elif defined(__llvm__)
+#   define PLAT_CC_LLVM 1
 #elif defined(__DOXYGEN__)
 #   define PLAT_CC_DOXYGEN 1
 #else
