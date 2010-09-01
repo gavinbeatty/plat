@@ -58,6 +58,7 @@
 #     define PLAT_CC_CLANG_VER_STR __clang_version__
 #   endif
 #elif defined(__GCCXML__)
+/* XXX test - __GNUC__ is probably defined too, so this'll fail */
 #   define PLAT_CC_GCCXML 1
 #elif defined(__DOXYGEN__)
 #   define PLAT_CC_DOXYGEN 1
@@ -78,6 +79,7 @@
 #       define PLAT_CXX_NOT_ISO 1
 #   endif
 #endif
+
 #ifdef __OBJC__
 #   define PLAT_OBJC 1
 /* XXX undef C? */
