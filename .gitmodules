@@ -1,3 +1,3 @@
 [submodule "cmake/cmakefiles"]
 	path = cmake/cmakefiles
-	url = git@github.com:gavinbeatty/cmakefiles.git
+	url = http://github.com/gavinbeatty/cmakefiles.git
