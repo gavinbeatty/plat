@@ -1,0 +1,13 @@
+
+set(_p ${PROJECT_NAME})
+set(${_p}_VERSION_MAJOR 1)
+set(${_p}_VERSION_MINOR 5)
+set(${_p}_VERSION_PATCH 0)
+set(${_p}_VERSION_STR "${${_p}_VERSION_MAJOR}.${${_p}_VERSION_MINOR}.${${_p}_VERSION_PATCH}")
+
+set(${_p}_VENDOR_STR "Gavin Beatty")
+set(${_p}_CONTACT_STR "Gavin Beatty <gavinbeatty@gmail.com>")
+set(${_p}_HOMEPAGE_STR "http://code.google.com/p/plat/")
+set(${_p}_DESCRIPTION_STR "Platform detection headers for C/C++.")
+unset(_p)
+
