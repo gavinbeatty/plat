@@ -1,19 +1,17 @@
-#ifndef PLAT_CONFIG_H
-#define PLAT_CONFIG_H
+#ifndef PLAT_CONFIG_H_
+#define PLAT_CONFIG_H_
 
 
-#define PLAT_VERSION_MAJOR      @plat_VERSION_MAJOR@
-#define PLAT_VERSION_MINOR      @plat_VERSION_MINOR@
-#define PLAT_VERSION_PATCH      @plat_VERSION_PATCH@
-#define PLAT_VERSION_STR        "@plat_VERSION_STR@"
-#define PLAT_HOMEPAGE_STR       "@plat_HOMEPAGE_STR@"
-#define PLAT_BUILD_TYPE_STR     "@CMAKE_BUILD_TYPE@"
-#define PLAT_CONTACT_STR        "@plat_CONTACT_STR@"
+#define PLAT_VERSION_MAJOR      @VERSION_MAJOR@
+#define PLAT_VERSION_MINOR      @VERSION_MINOR@
+#define PLAT_VERSION_PATCH      @VERSION_PATCH@
+#define PLAT_VERSION_STR        "@VERSION@"
+#define PLAT_HOMEPAGE_STR       "@HOMEPAGE@"
+#define PLAT_CONTACT_STR        "@CONTACT@"
 
 #define PLAT_VERSION \
     (((PLAT_VERSION_MAJOR)<<16)|((PLAT_VERSION_MINOR)<<8)|((PLAT_VERSION_PATCH)+0))
 #define PLAT_VERSION_CHECK(major,minor,patch) \
     (((major) << 16)|((minor) << 8)|((patch)+0))
 
-#endif /* PLAT_CONFIG_H */
-
+#endif
