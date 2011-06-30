@@ -6,24 +6,18 @@ plat: Platform/compiler/endian-ness detection headers for C.
 
 License
 -------
-Copyright (c) 2010 Gavin Beatty <gavinbeatty@gmail.com>.
-All rights reserved.
+Copyright and license details are found in the included LICENSE.txt.
 
-New BSD License. Found in LICENSE.txt.
+Requirements
+------------
+GNU Make (tested with 3.81)
 
 Install
 -------
-Configure:
-    mkdir build
-    cd build
-    cmake ../
+To configure just run `make`.
 
-Select your own prefix:
-    cmake -DCMAKE_INSTALL_PREFIX=~/.local/usr ../
+Default install prefix is `/usr/local`. Examples for installing:
 
-Build:
-    make
-
-Default prefix is `/usr/local`:
-    sudo make install
+* `make install PREFIX="$HOME"/.local`
+* `fakeroot make install PREFIX="/usr" DESTROOT=./plat-bin`
 
