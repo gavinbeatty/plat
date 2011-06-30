@@ -1,5 +1,5 @@
-#ifndef PLAT_CC_H
-#define PLAT_CC_H
+#ifndef PLAT_CC_H_
+#define PLAT_CC_H_
 
 #include <plat/config.h>
 
@@ -112,5 +112,4 @@
 
 #define PLAT_CC_GNU (0plat_cc_gnu_does_not_exist_anymore__use_plat_cc_gcc)
 
-#endif /* PLAT_CC_H */
-
+#endif
