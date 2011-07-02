@@ -1,9 +1,9 @@
 SHELL = /bin/sh
 .SUFFIXES:
 
-.PHONY: help all build install
+.PHONY: help all configure config install
 help:
-	@echo "Targets: help all build install"
+	@echo "Targets: help all configure install"
 
 PROJECT_NAME = plat
 HOMEPAGE = http://github.com/gavinbeatty/plat
@@ -27,7 +27,7 @@ plat.pc: plat.pc.in
 		-e 's#@PROJECT_NAME@#$(PROJECT_NAME)#g' \
 		-e 's#@HOMEPAGE@#$(HOMEPAGE)#g' \
 		-e 's#@PREFIX@#$(PREFIX)#g' \
-		$(srcdir)/plat.pc.in > $(srcdir)/plat.pc
+		plat.pc.in > plat.pc
 
 src/plat/config.h: src/plat/config.h.in
 	$(gen_p)$(SED) \
@@ -35,9 +35,10 @@ src/plat/config.h: src/plat/config.h.in
 		-e 's#@VERSION_MINOR@#$(VERSION_MINOR)#g' \
 		-e 's#@VERSION_PATCH@#$(VERSION_PATCH)#g' \
 		-e 's#@VERSION@#$(VERSION)#g' \
-		$(srcdir)/src/plat/config.h.in > $(srcdir)/src/plat/config.h
-build: src/plat/config.h plat.pc
+		src/plat/config.h.in > src/plat/config.h
+configure: src/plat/config.h plat.pc
+config: configure
 
-install: build
+install: configure
 	$(INSTALL_DIR) $(DESTROOT)$(PREFIX)/include/plat
 	$(INSTALL_DATA) $(wildcard src/plat/*.h) $(DESTROOT)$(PREFIX)/include/plat/

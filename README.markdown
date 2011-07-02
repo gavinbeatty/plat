@@ -14,10 +14,11 @@ GNU Make (tested with 3.81)
 
 Install
 -------
-To configure just run `make`.
+To configure just run `make configure`.
 
 Default install prefix is `/usr/local`. Examples for installing:
 
+* `sudo make install`
 * `make install PREFIX="$HOME"/.local`
 * `fakeroot make install PREFIX="/usr" DESTROOT=./plat-bin`
 
