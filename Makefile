@@ -1,9 +1,9 @@
 SHELL = /bin/sh
 .SUFFIXES:
 
-.PHONY: help all configure config install
+.PHONY: help all configure config conf confclean install
 help:
-	@echo "Targets: help all configure install"
+	@echo "Targets: help all configure confclean install"
 
 PROJECT_NAME = plat
 HOMEPAGE = http://github.com/gavinbeatty/plat
@@ -14,13 +14,14 @@ VERSION_PATCH := 0
 VERSION := $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
 SED ?= sed
+RM ?= rm
 INSTALL ?= install
 INSTALL_DIR ?= $(INSTALL) -d
 INSTALL_DATA ?= $(INSTALL) -m 0644
 
 gen_p = @echo '    GEN       ' $@;
 
-all: plat.pc src/plat/config.h
+all: configure
 
 plat.pc: plat.pc.in
 	$(gen_p)$(SED) \
@@ -38,6 +39,11 @@ src/plat/config.h: src/plat/config.h.in
 		src/plat/config.h.in > src/plat/config.h
 configure: src/plat/config.h plat.pc
 config: configure
+conf: configure
+
+confclean:
+	$(RM) src/plat/config.h plat.pc
+
 
 install: configure
 	$(INSTALL_DIR) $(DESTROOT)$(PREFIX)/include/plat
