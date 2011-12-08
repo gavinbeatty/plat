@@ -58,6 +58,8 @@
 #elif defined(__GNU__)
 #   define PLAT_OS_HURD 1
 #   define PLAT_OS_UNIX 1
+#elif defined(__native_client__)
+#   define PLAT_OS_NACL 1
 #else
 #   error "plat: Unknown platform!"
 #endif

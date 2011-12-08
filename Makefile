@@ -5,13 +5,11 @@ SHELL = /bin/sh
 help:
 	@echo "Targets: help all configure confclean install"
 
-PROJECT_NAME = plat
-HOMEPAGE = http://github.com/gavinbeatty/plat
 PREFIX = /usr/local
-VERSION_MAJOR := 1
-VERSION_MINOR := 5
-VERSION_PATCH := 0
-VERSION := $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
+VERSION_MAJOR = 1
+VERSION_MINOR = 5
+VERSION_PATCH = 0
+VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
 SED ?= sed
 RM ?= rm
@@ -25,8 +23,9 @@ all: configure
 
 plat.pc: plat.pc.in
 	$(gen_p)$(SED) \
-		-e 's#@PROJECT_NAME@#$(PROJECT_NAME)#g' \
-		-e 's#@HOMEPAGE@#$(HOMEPAGE)#g' \
+		-e 's#@VERSION_MAJOR@#$(VERSION_MAJOR)#g' \
+		-e 's#@VERSION_MINOR@#$(VERSION_MINOR)#g' \
+		-e 's#@VERSION_PATCH@#$(VERSION_PATCH)#g' \
 		-e 's#@PREFIX@#$(PREFIX)#g' \
 		plat.pc.in > plat.pc
 
@@ -35,7 +34,6 @@ src/plat/config.h: src/plat/config.h.in
 		-e 's#@VERSION_MAJOR@#$(VERSION_MAJOR)#g' \
 		-e 's#@VERSION_MINOR@#$(VERSION_MINOR)#g' \
 		-e 's#@VERSION_PATCH@#$(VERSION_PATCH)#g' \
-		-e 's#@VERSION@#$(VERSION)#g' \
 		src/plat/config.h.in > src/plat/config.h
 configure: src/plat/config.h plat.pc
 config: configure

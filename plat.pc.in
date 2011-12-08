@@ -1,16 +1,10 @@
-# pkg-config file generated for @PROJECT_NAME@.
-
+# pkg-config file generated for plat.
 prefix=@PREFIX@
 exec_prefix=${prefix}
-libdir=${exec_prefix}/@libdir@
-includedir=${prefix}/@includedir@
+includedir=${prefix}/include
 
-Name: @PROJECT_NAME@
-Description: @description_str@
-Version: @version_str@
-#Requires:
-URL: @HOMEPAGE@
-#Libs: -L${libdir} -l@PROJECT_NAME@
-#Libs.private:
+Name: plat
+Description: Provides platform detection for operating system, compiler, endianness.
+Version: @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
+URL: http://github.com/gavinbeatty/plat
 Cflags: -I${includedir}
-
