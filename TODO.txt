@@ -1,4 +1,4 @@
-
-* do we need the #ifndef X ; #define X 0 ; #endif stuff? #if seems to work without it
-
+testing
+-------
+M there are no real tests - this needs doing with cross-compilers, VMs etc..
 
